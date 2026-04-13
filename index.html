@@ -121,4 +121,96 @@
     </div>
 
 </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TITAEKO | My Edits</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #000;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            text-align: center;
+        }
+
+        header {
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: 5px;
+            background: linear-gradient(to right, #ff0055, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .video-card {
+            background: #111;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #222;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+            border-bottom: 2px solid #ff0055;
+        }
+
+        .video-desc {
+            padding: 15px;
+            font-size: 1rem;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>TITAEKO</h1>
+        <div class="subtitle">Best Photo & Video Ever</div>
+    </header>
+
+    <div class="video-grid">
+        
+        <div class="video-card">
+            <video controls>
+                <source src="my-edit-1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-desc">Editing Project #1</div>
+        </div>
+
+        <div class="video-card">
+            <video controls>
+                <source src="my-edit-2.mp4" type="video/mp4">
+            </video>
+            <div class="video-desc">Editing Project #2</div>
+        </div>
+
+    </div>
+
+    <p style="margin-top: 40px; color: #444;">Upload your MP4 files to GitHub repo to see them here.</p>
+
+</body>
 </html>
