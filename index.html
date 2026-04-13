@@ -3,90 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SocialConnect | Feed</title>
-    <link rel="stylesheet" href="style.css">
+    <title>TITAEKO | My Space</title>
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #0f172a; /* Dark Blue-Black */
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Card */
+        .container {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 90%;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: #94a3b8;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        .links {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .link-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #38bdf8;
+            transform: scale(1.02);
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            background: #1e293b;
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: #38bdf8;
+            border: 1px solid #38bdf8;
+        }
+
+        /* Background Animation */
+        .bg-blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: #38bdf8;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">Social<span>Connect</span></div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search friends, videos...">
+
+    <div class="bg-blob" style="top: 10%; left: 10%;"></div>
+    <div class="bg-blob" style="bottom: 10%; right: 10%;"></div>
+
+    <div class="container">
+        <h1>TITAEKO</h1>
+        <p>A minimalist space for big ideas.</p>
+        
+        <div class="links">
+            <a href="#" class="link-card">🚀 My Projects</a>
+            <a href="#" class="link-card">✍️ Reading List</a>
+            <a href="https://github.com/" class="link-card">💻 GitHub Profile</a>
         </div>
-        <div class="nav-icons">
-            <button class="btn-primary">Create Post</button>
-            <div class="profile-pic"></div>
-        </div>
-    </nav>
 
-    <main class="container">
-        <aside class="sidebar">
-            <ul>
-                <li class="active">News Feed</li>
-                <li>Messages</li>
-                <li>Friends</li>
-                <li>Settings</li>
-            </ul>
-        </aside>
+        <div class="status">Under Construction 🛠️</div>
+    </div>
 
-        <section class="feed" id="main-feed">
-            <div class="create-post">
-                <textarea id="post-input" placeholder="What's on your mind?"></textarea>
-                <button onclick="addPost()">Post</button>
-            </div>
-            
-            <div id="post-container"></div>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
 </body>
-</html>* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-body { background-color: #f0f2f5; color: #1c1e21; }
-
-.navbar {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 10px 5%; background: white; position: sticky; top: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.logo span { color: #1877f2; font-weight: bold; }
-
-.container { display: grid; grid-template-columns: 1fr 3fr; gap: 20px; padding: 20px 5%; }
-
-.sidebar { background: white; padding: 20px; border-radius: 8px; height: fit-content; }
-.sidebar li { list-style: none; padding: 10px; cursor: pointer; border-radius: 5px; }
-.sidebar li.active { background: #e7f3ff; color: #1877f2; }
-
-.create-post { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-.create-post textarea { width: 100%; border: none; background: #f0f2f5; padding: 10px; border-radius: 5px; resize: none; }
-
-.post-card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-.post-header { font-weight: bold; margin-bottom: 10px; }
-.post-actions { margin-top: 15px; border-top: 1px solid #ddd; padding-top: 10px; }
-.btn-like { color: #65676b; cursor: pointer; background: none; border: none; font-weight: 600; }
-.btn-like.active { color: #1877f2; }const postContainer = document.getElementById('post-container');
-const postInput = document.getElementById('post-input');
-
-function addPost() {
-    const text = postInput.value;
-    if (text.trim() === "") return alert("Kuch toh likho!");
-
-    const postDiv = document.createElement('div');
-    postDiv.className = 'post-card';
-    
-    postDiv.innerHTML = `
-        <div class="post-header">User Name</div>
-        <div class="post-content">${text}</div>
-        <div class="post-actions">
-            <button class="btn-like" onclick="toggleLike(this)">👍 Like</button>
-            <span style="margin-left:15px; color:#65676b">💬 Comment</span>
-        </div>
-    `;
-
-    postContainer.prepend(postDiv); // New post top par aayega
-    postInput.value = "";
-}
-
-function toggleLike(btn) {
-    btn.classList.toggle('active');
-    btn.innerText = btn.classList.contains('active') ? "💙 Liked" : "👍 Like";
-}
+</html>
