@@ -3,214 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITAEKO | My Space</title>
+    <title>TITAEKO | Coming Soon</title>
     <style>
-        /* Base Styles */
-        body {
+        body, html {
+            height: 100%;
             margin: 0;
-            padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #0f172a; /* Dark Blue-Black */
-            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Glassmorphism Card */
-        .container {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 3rem;
-            border-radius: 24px;
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            max-width: 400px;
-            width: 90%;
-            animation: fadeIn 1s ease-in;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .container {
+            max-width: 800px;
+            padding: 20px;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 5rem;
             margin: 0;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, #444);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -2px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255,255,255,0.2); }
+            to { text-shadow: 0 0 30px rgba(255,255,255,0.5); }
+        }
+
+        p.coming-soon {
+            font-size: 1.5rem;
+            color: #888;
+            margin-bottom: 40px;
             text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
-        p {
-            color: #94a3b8;
-            margin-top: 10px;
-            font-size: 1.1rem;
-        }
-
-        .links {
-            margin-top: 30px;
+        /* Timer Styles */
+        #timer {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            justify-content: center;
+            gap: 20px;
         }
 
-        .link-card {
+        .time-box {
             background: rgba(255, 255, 255, 0.05);
-            padding: 12px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 80px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .link-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #38bdf8;
-            transform: scale(1.02);
+        .num {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            color: #fff;
         }
 
-        .status {
-            display: inline-block;
-            margin-top: 20px;
+        .label {
             font-size: 0.8rem;
-            background: #1e293b;
-            padding: 5px 15px;
-            border-radius: 20px;
-            color: #38bdf8;
-            border: 1px solid #38bdf8;
-        }
-
-        /* Background Animation */
-        .bg-blob {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: #38bdf8;
-            filter: blur(80px);
-            opacity: 0.15;
-            z-index: -1;
-            border-radius: 50%;
+            color: #555;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
-
-    <div class="bg-blob" style="top: 10%; left: 10%;"></div>
-    <div class="bg-blob" style="bottom: 10%; right: 10%;"></div>
 
     <div class="container">
         <h1>TITAEKO</h1>
-        <p>A minimalist space for big ideas.</p>
-        
-        <div class="links">
-            <a href="#" class="link-card">🚀 My Projects</a>
-            <a href="#" class="link-card">✍️ Reading List</a>
-            <a href="https://github.com/" class="link-card">💻 GitHub Profile</a>
-        </div>
+        <p class="coming-soon">Best Photos Ever - Launching In</p>
 
-        <div class="status">Under Construction 🛠️</div>
+        <div id="timer">
+            <div class="time-box">
+                <span class="num" id="days">00</span>
+                <span class="label">Days</span>
+            </div>
+            <div class="time-box">
+                <span class="num" id="hours">00</span>
+                <span class="label">Hours</span>
+            </div>
+            <div class="time-box">
+                <span class="num" id="minutes">00</span>
+                <span class="label">Mins</span>
+            </div>
+            <div class="time-box">
+                <span class="num" id="seconds">00</span>
+                <span class="label">Secs</span>
+            </div>
+        </div>
     </div>
 
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITAEKO | My Edits</title>
-    <style>
-        body {
-            margin: 0;
-            background-color: #000;
-            color: white;
-            font-family: 'Inter', sans-serif;
-            text-align: center;
-        }
+    <script>
+        // Yahan wo Date daalo jab website launch karni hai
+        const launchDate = new Date("Dec 31, 2026 00:00:00").getTime();
 
-        header {
-            padding: 60px 20px;
-        }
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
 
-        h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            letter-spacing: 5px;
-            background: linear-gradient(to right, #ff0055, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+            // Time calculations
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        .subtitle {
-            color: #888;
-            margin-top: 10px;
-            letter-spacing: 2px;
-        }
+            // Output the result
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
 
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .video-card {
-            background: #111;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid #222;
-        }
-
-        video {
-            width: 100%;
-            display: block;
-            border-bottom: 2px solid #ff0055;
-        }
-
-        .video-desc {
-            padding: 15px;
-            font-size: 1rem;
-            color: #ccc;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>TITAEKO</h1>
-        <div class="subtitle">Best Photo & Video Ever</div>
-    </header>
-
-    <div class="video-grid">
-        
-        <div class="video-card">
-            <video controls>
-                <source src="my-edit-1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-desc">Editing Project #1</div>
-        </div>
-
-        <div class="video-card">
-            <video controls>
-                <source src="my-edit-2.mp4" type="video/mp4">
-            </video>
-            <div class="video-desc">Editing Project #2</div>
-        </div>
-
-    </div>
-
-    <p style="margin-top: 40px; color: #444;">Upload your MP4 files to GitHub repo to see them here.</p>
+            // If countdown is over
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("timer").innerHTML = "WE ARE LIVE!";
+            }
+        }, 1000);
+    </script>
 
 </body>
 </html>
