@@ -1,215 +1,92 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titaeko - Social Media</title>
+    <title>SocialConnect | Feed</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header>
-        <h1 class="logo">TITAEKO</h1>
-        <nav>
-            <input type="text" placeholder="Search Titaeko...">
-        </nav>
-    </header>
+    <nav class="navbar">
+        <div class="logo">Social<span>Connect</span></div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search friends, videos...">
+        </div>
+        <div class="nav-icons">
+            <button class="btn-primary">Create Post</button>
+            <div class="profile-pic"></div>
+        </div>
+    </nav>
 
     <main class="container">
-        <div class="post-box">
-            <textarea placeholder="Kya chal raha hai aapke mann mein?"></textarea>
-            <button id="post-btn">Post Karein</button>
-        </div>
+        <aside class="sidebar">
+            <ul>
+                <li class="active">News Feed</li>
+                <li>Messages</li>
+                <li>Friends</li>
+                <li>Settings</li>
+            </ul>
+        </aside>
 
-        <div id="feed">
-            <div class="post">
-                <h3>User 1</h3>
-                <p>Ye Titaeko par meri pehli post hai! 🚀</p>
-                <div class="actions">
-                    <span>❤️ Like</span> <span>💬 Comment</span>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <script src="script.js"></script>
-</body>
-</html>
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #e9ebee; /* Facebook jaisa light grey */
-    margin: 0;
-}
-
-header {
-    background-color: #ffffff;
-    padding: 10px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-}
-
-/* Titaeko ko bade aur bold mein dikhane ke liye */
-.logo {
-    color: #1877f2;
-    font-size: 35px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin: 0;
-}
-
-.container {
-    max-width: 600px;
-    margin: 20px auto;
-}
-
-.post-box, .post {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-}
-
-textarea {
-    width: 100%;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    resize: none;
-}
-
-#post-btn {
-    background-color: #1877f2;
-    color: white;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    float: right;
-}
-
-.post h3 { margin-top: 0; color: #1c1e21; }
-
-.actions {
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
-    margin-top: 10px;
-    display: flex;
-    gap: 20px;
-    color: #606770;
-    cursor: pointer;
-}
-document.getElementById('post-btn').addEventListener('click', function() {
-    const text = document.querySelector('textarea').value;
-    if(text.trim() !== "") {
-        const feed = document.getElementById('feed');
-        const newPost = document.createElement('div');
-        newPost.classList.add('post');
-        newPost.innerHTML = `
-            <h3>Aap (Me)</h3>
-            <p>${text}</p>
-            <div class="actions">
-                <span>❤️ Like</span> <span>💬 Comment</span>
-            </div>
-        `;
-        feed.prepend(newPost); // Nayi post upar aayegi
-        document.querySelector('textarea').value = ""; // Box saaf karein
-    } else {
-        alert("Kuch toh likhiye!");
-    }
-});
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titaeko | Social Media</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <header>
-        <h1 class="logo">TITAEKO</h1>
-        <div class="tabs">
-            <button onclick="showTab('feed-section')">Posts</button>
-            <button onclick="showTab('video-section')">Upload Video</button>
-        </div>
-    </header>
-
-    <main class="container">
-        <section id="feed-section" class="tab-content">
+        <section class="feed" id="main-feed">
             <div class="create-post">
-                <textarea id="postInput" placeholder="Kuch likhiye..."></textarea>
-                <button id="postBtn">Post Karein</button>
+                <textarea id="post-input" placeholder="What's on your mind?"></textarea>
+                <button onclick="addPost()">Post</button>
             </div>
-            <div id="feed">
-                </div>
-        </section>
-
-        <section id="video-section" class="tab-content" style="display:none;">
-            <div class="video-upload-box">
-                <h2>Video Upload Karein</h2>
-                <input type="file" id="videoInput" accept="video/*">
-                <button id="videoBtn">Upload Video</button>
-            </div>
-            <div id="videoGallery"></div>
+            
+            <div id="post-container"></div>
         </section>
     </main>
 
-    <div id="postModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="modalBody"></div>
-        </div>
-    </div>
-
     <script src="script.js"></script>
 </body>
-</html>
-// Tab Switching Logic
-function showTab(tabId) {
-    document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
-    document.getElementById(tabId).style.display = 'block';
+</html>* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { background-color: #f0f2f5; color: #1c1e21; }
+
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 5%; background: white; position: sticky; top: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-// Post Create and Click Logic
-document.getElementById('postBtn').addEventListener('click', function() {
-    const text = document.getElementById('postInput').value;
-    if(text) {
-        const feed = document.getElementById('feed');
-        const card = document.createElement('div');
-        card.className = 'post-card';
-        card.innerHTML = `<h3>User</h3><p>${text.substring(0, 50)}...</p><small>Click to read more</small>`;
-        
-        // Click karne par modal khulega
-        card.onclick = function() {
-            document.getElementById('modalBody').innerHTML = `<h3>User</h3><hr><p>${text}</p>`;
-            document.getElementById('postModal').style.display = 'block';
-        };
-        
-        feed.prepend(card);
-        document.getElementById('postInput').value = "";
-    }
-});
+.logo span { color: #1877f2; font-weight: bold; }
 
-// Video Upload Logic
-document.getElementById('videoBtn').addEventListener('click', function() {
-    const file = document.getElementById('videoInput').files[0];
-    if(file) {
-        const url = URL.createObjectURL(file);
-        const gallery = document.getElementById('videoGallery');
-        const videoDiv = document.createElement('div');
-        videoDiv.className = 'post-card';
-        videoDiv.innerHTML = `<video src="${url}" controls></video>`;
-        gallery.prepend(videoDiv);
-    }
-});
+.container { display: grid; grid-template-columns: 1fr 3fr; gap: 20px; padding: 20px 5%; }
 
-// Modal Close
-function closeModal() { document.getElementById('postModal').style.display = 'none'; }
+.sidebar { background: white; padding: 20px; border-radius: 8px; height: fit-content; }
+.sidebar li { list-style: none; padding: 10px; cursor: pointer; border-radius: 5px; }
+.sidebar li.active { background: #e7f3ff; color: #1877f2; }
 
+.create-post { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+.create-post textarea { width: 100%; border: none; background: #f0f2f5; padding: 10px; border-radius: 5px; resize: none; }
+
+.post-card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+.post-header { font-weight: bold; margin-bottom: 10px; }
+.post-actions { margin-top: 15px; border-top: 1px solid #ddd; padding-top: 10px; }
+.btn-like { color: #65676b; cursor: pointer; background: none; border: none; font-weight: 600; }
+.btn-like.active { color: #1877f2; }const postContainer = document.getElementById('post-container');
+const postInput = document.getElementById('post-input');
+
+function addPost() {
+    const text = postInput.value;
+    if (text.trim() === "") return alert("Kuch toh likho!");
+
+    const postDiv = document.createElement('div');
+    postDiv.className = 'post-card';
+    
+    postDiv.innerHTML = `
+        <div class="post-header">User Name</div>
+        <div class="post-content">${text}</div>
+        <div class="post-actions">
+            <button class="btn-like" onclick="toggleLike(this)">👍 Like</button>
+            <span style="margin-left:15px; color:#65676b">💬 Comment</span>
+        </div>
+    `;
+
+    postContainer.prepend(postDiv); // New post top par aayega
+    postInput.value = "";
+}
+
+function toggleLike(btn) {
+    btn.classList.toggle('active');
+    btn.innerText = btn.classList.contains('active') ? "💙 Liked" : "👍 Like";
+}
