@@ -123,3 +123,93 @@ document.getElementById('post-btn').addEventListener('click', function() {
         alert("Kuch toh likhiye!");
     }
 });
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titaeko | Social Media</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 class="logo">TITAEKO</h1>
+        <div class="tabs">
+            <button onclick="showTab('feed-section')">Posts</button>
+            <button onclick="showTab('video-section')">Upload Video</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="feed-section" class="tab-content">
+            <div class="create-post">
+                <textarea id="postInput" placeholder="Kuch likhiye..."></textarea>
+                <button id="postBtn">Post Karein</button>
+            </div>
+            <div id="feed">
+                </div>
+        </section>
+
+        <section id="video-section" class="tab-content" style="display:none;">
+            <div class="video-upload-box">
+                <h2>Video Upload Karein</h2>
+                <input type="file" id="videoInput" accept="video/*">
+                <button id="videoBtn">Upload Video</button>
+            </div>
+            <div id="videoGallery"></div>
+        </section>
+    </main>
+
+    <div id="postModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+// Tab Switching Logic
+function showTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
+    document.getElementById(tabId).style.display = 'block';
+}
+
+// Post Create and Click Logic
+document.getElementById('postBtn').addEventListener('click', function() {
+    const text = document.getElementById('postInput').value;
+    if(text) {
+        const feed = document.getElementById('feed');
+        const card = document.createElement('div');
+        card.className = 'post-card';
+        card.innerHTML = `<h3>User</h3><p>${text.substring(0, 50)}...</p><small>Click to read more</small>`;
+        
+        // Click karne par modal khulega
+        card.onclick = function() {
+            document.getElementById('modalBody').innerHTML = `<h3>User</h3><hr><p>${text}</p>`;
+            document.getElementById('postModal').style.display = 'block';
+        };
+        
+        feed.prepend(card);
+        document.getElementById('postInput').value = "";
+    }
+});
+
+// Video Upload Logic
+document.getElementById('videoBtn').addEventListener('click', function() {
+    const file = document.getElementById('videoInput').files[0];
+    if(file) {
+        const url = URL.createObjectURL(file);
+        const gallery = document.getElementById('videoGallery');
+        const videoDiv = document.createElement('div');
+        videoDiv.className = 'post-card';
+        videoDiv.innerHTML = `<video src="${url}" controls></video>`;
+        gallery.prepend(videoDiv);
+    }
+});
+
+// Modal Close
+function closeModal() { document.getElementById('postModal').style.display = 'none'; }
+
