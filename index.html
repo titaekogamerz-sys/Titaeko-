@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titaeko - Social Media</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 class="logo">TITAEKO</h1>
+        <nav>
+            <input type="text" placeholder="Search Titaeko...">
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="post-box">
+            <textarea placeholder="Kya chal raha hai aapke mann mein?"></textarea>
+            <button id="post-btn">Post Karein</button>
+        </div>
+
+        <div id="feed">
+            <div class="post">
+                <h3>User 1</h3>
+                <p>Ye Titaeko par meri pehli post hai! 🚀</p>
+                <div class="actions">
+                    <span>❤️ Like</span> <span>💬 Comment</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e9ebee; /* Facebook jaisa light grey */
+    margin: 0;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+}
+
+/* Titaeko ko bade aur bold mein dikhane ke liye */
+.logo {
+    color: #1877f2;
+    font-size: 35px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.post-box, .post {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    resize: none;
+}
+
+#post-btn {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    float: right;
+}
+
+.post h3 { margin-top: 0; color: #1c1e21; }
+
+.actions {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+    color: #606770;
+    cursor: pointer;
+}
+document.getElementById('post-btn').addEventListener('click', function() {
+    const text = document.querySelector('textarea').value;
+    if(text.trim() !== "") {
+        const feed = document.getElementById('feed');
+        const newPost = document.createElement('div');
+        newPost.classList.add('post');
+        newPost.innerHTML = `
+            <h3>Aap (Me)</h3>
+            <p>${text}</p>
+            <div class="actions">
+                <span>❤️ Like</span> <span>💬 Comment</span>
+            </div>
+        `;
+        feed.prepend(newPost); // Nayi post upar aayegi
+        document.querySelector('textarea').value = ""; // Box saaf karein
+    } else {
+        alert("Kuch toh likhiye!");
+    }
+});
