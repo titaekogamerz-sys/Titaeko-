@@ -3,60 +3,175 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Titaeko Gamerz Gallery</title>
+  <title>Titaeko Gamerz | Pro Gallery</title>
 
   <style>
-    body{
+    *{
       margin:0;
       padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
       background:#0b0b0b;
       color:white;
-      font-family: Arial, sans-serif;
-      text-align:center;
+      scroll-behavior:smooth;
     }
 
-    h1{
-      margin-top:35px;
-      font-size:55px;
+    /* NAVBAR */
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      padding:15px 30px;
+      background:rgba(0,0,0,0.75);
+      backdrop-filter:blur(10px);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      z-index:1000;
+      border-bottom:1px solid rgba(0,255,204,0.2);
+    }
+
+    nav .logo{
+      font-size:22px;
       font-weight:bold;
       color:#00ffcc;
-      letter-spacing:2px;
+      letter-spacing:1px;
     }
 
-    p{
-      margin-top:-15px;
-      font-size:16px;
-      color:#bbbbbb;
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:18px;
     }
 
-    /* Grid Gallery */
-    .gallery{
-      margin-top:30px;
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap:15px;
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      font-size:15px;
+      transition:0.3s;
+      padding:6px 10px;
+      border-radius:8px;
+    }
+
+    nav ul li a:hover{
+      color:#00ffcc;
+      background:rgba(0,255,204,0.15);
+    }
+
+    /* HERO */
+    .hero{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
       padding:20px;
+      background:linear-gradient(135deg,#000,#0b0b0b,#00ffcc);
+    }
+
+    .hero h1{
+      font-size:55px;
+      font-weight:bold;
+      color:white;
+      text-shadow:0px 0px 20px rgba(0,255,204,0.4);
+      animation:fadeIn 2s ease;
+    }
+
+    .hero p{
+      margin-top:12px;
+      font-size:16px;
+      color:#e6e6e6;
+      opacity:0.9;
+    }
+
+    .hero button{
+      margin-top:25px;
+      padding:12px 22px;
+      border:none;
+      border-radius:12px;
+      background:#00ffcc;
+      color:black;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .hero button:hover{
+      transform:scale(1.08);
+      box-shadow:0px 0px 20px rgba(0,255,204,0.6);
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0; transform:translateY(40px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+
+    /* SECTION */
+    section{
+      padding:90px 20px;
+      text-align:center;
       max-width:1100px;
-      margin-left:auto;
-      margin-right:auto;
+      margin:auto;
+    }
+
+    section h2{
+      font-size:35px;
+      margin-bottom:10px;
+      color:#00ffcc;
+    }
+
+    section p{
+      color:#bbbbbb;
+      max-width:700px;
+      margin:auto;
+      font-size:15px;
+      line-height:1.6;
+    }
+
+    /* ABOUT BOX */
+    .aboutBox{
+      margin-top:30px;
+      background:#111;
+      padding:25px;
+      border-radius:18px;
+      border:1px solid rgba(0,255,204,0.2);
+      box-shadow:0px 0px 18px rgba(0,0,0,0.8);
+    }
+
+    .aboutBox h3{
+      font-size:20px;
+      color:white;
+      margin-bottom:10px;
+    }
+
+    /* GALLERY */
+    .gallery{
+      margin-top:35px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap:15px;
     }
 
     .gallery img{
       width:100%;
-      height:250px;
+      height:260px;
       object-fit:cover;
       border-radius:15px;
       cursor:pointer;
       transition:0.3s;
+      border:1px solid rgba(255,255,255,0.05);
       box-shadow:0px 0px 12px rgba(0,0,0,0.7);
     }
 
     .gallery img:hover{
       transform:scale(1.05);
-      box-shadow:0px 0px 18px rgba(0,255,204,0.5);
+      box-shadow:0px 0px 20px rgba(0,255,204,0.5);
     }
 
-    /* Full Screen Popup */
+    /* POPUP */
     .popup{
       display:none;
       position:fixed;
@@ -64,58 +179,158 @@
       left:0;
       width:100%;
       height:100%;
-      background:rgba(0,0,0,0.9);
+      background:rgba(0,0,0,0.92);
       justify-content:center;
       align-items:center;
-      z-index:999;
+      z-index:2000;
     }
 
     .popup img{
-      max-width:90%;
+      max-width:92%;
       max-height:85%;
       border-radius:15px;
-      box-shadow:0px 0px 20px rgba(0,255,204,0.6);
+      box-shadow:0px 0px 25px rgba(0,255,204,0.7);
     }
 
     .close{
       position:absolute;
       top:20px;
       right:30px;
-      font-size:40px;
+      font-size:45px;
       color:white;
       cursor:pointer;
       font-weight:bold;
+      transition:0.2s;
     }
 
-    footer{
-      padding:15px;
+    .close:hover{
+      color:#00ffcc;
+      transform:scale(1.1);
+    }
+
+    /* CONTACT */
+    .contactBox{
+      margin-top:30px;
       background:#111;
-      margin-top:20px;
+      padding:25px;
+      border-radius:18px;
+      border:1px solid rgba(0,255,204,0.2);
+    }
+
+    .contactBox a{
+      display:inline-block;
+      margin:10px;
+      padding:10px 18px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:bold;
+      background:rgba(0,255,204,0.15);
+      color:#00ffcc;
+      border:1px solid rgba(0,255,204,0.2);
+      transition:0.3s;
+    }
+
+    .contactBox a:hover{
+      background:#00ffcc;
+      color:black;
+      transform:scale(1.05);
+    }
+
+    /* FOOTER */
+    footer{
+      text-align:center;
+      padding:18px;
+      background:#050505;
+      color:#777;
       font-size:13px;
-      color:#aaa;
+      border-top:1px solid rgba(0,255,204,0.15);
+    }
+
+    /* MOBILE FIX */
+    @media(max-width:600px){
+      .hero h1{
+        font-size:38px;
+      }
+
+      nav{
+        flex-direction:column;
+        gap:10px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <h1>Titaeko</h1>
-  <p>Best Photo and Skill</p>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">Titaeko Gamerz</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-  <div class="gallery">
-    <img src="1.jpg" onclick="openPopup(this.src)">
-    <img src="2.jpg" onclick="openPopup(this.src)">
-    <img src="3.jpg" onclick="openPopup(this.src)">
-    <img src="4.jpg" onclick="openPopup(this.src)">
-    <img src="5.jpg" onclick="openPopup(this.src)">
+  <!-- HERO -->
+  <div class="hero" id="home">
+    <div>
+      <h1>Welcome to My Website</h1>
+      <p>Minecraft • Gaming • Creativity • Pro Gallery</p>
+      <button onclick="document.getElementById('gallery').scrollIntoView();">
+        View Gallery
+      </button>
+    </div>
   </div>
 
-  <!-- Full Screen Popup -->
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Main Titaeko Gamerz hoon. Mujhe Minecraft gaming pasand hai aur main creative videos aur photos share karta hoon.
+      Ye website meri gallery aur gaming content ko showcase karne ke liye hai.
+    </p>
+
+    <div class="aboutBox">
+      <h3>🔥 My Skills</h3>
+      <p>🎮 Minecraft Gamer • 📸 Photo Editing • 💻 Website Designing • 🎥 Shorts Creator</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <h2>My Gallery</h2>
+    <p>Click on any photo to open fullscreen.</p>
+
+    <div class="gallery">
+      <img src="1.jpg" onclick="openPopup(this.src)">
+      <img src="2.jpg" onclick="openPopup(this.src)">
+      <img src="3.jpg" onclick="openPopup(this.src)">
+      <img src="4.jpg" onclick="openPopup(this.src)">
+      <img src="5.jpg" onclick="openPopup(this.src)">
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Follow me on social media or contact me.</p>
+
+    <div class="contactBox">
+      <a href="https://www.youtube.com" target="_blank">YouTube</a>
+      <a href="https://www.instagram.com" target="_blank">Instagram</a>
+      <a href="mailto:example@gmail.com">Email</a>
+    </div>
+  </section>
+
+  <!-- POPUP -->
   <div class="popup" id="popup">
     <span class="close" onclick="closePopup()">&times;</span>
     <img id="popupImg">
   </div>
 
+  <!-- FOOTER -->
   <footer>
     © 2026 Titaeko Gamerz | All Rights Reserved
   </footer>
@@ -129,6 +344,13 @@
     function closePopup(){
       document.getElementById("popup").style.display = "none";
     }
+
+    // Close popup when clicking outside image
+    document.getElementById("popup").addEventListener("click", function(e){
+      if(e.target.id === "popup"){
+        closePopup();
+      }
+    });
   </script>
 
 </body>
