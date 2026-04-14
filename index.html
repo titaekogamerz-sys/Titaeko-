@@ -83,6 +83,18 @@
       }
     }
 
+    /* PROFESSIONAL SCROLL ANIMATION */
+    .reveal{
+      opacity:0;
+      transform:translateY(50px);
+      transition:all 1s ease;
+    }
+
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0px);
+    }
+
     /* NAVBAR */
     nav{
       position:fixed;
@@ -356,7 +368,7 @@
   </div>
 
   <!-- ABOUT -->
-  <section id="about">
+  <section id="about" class="reveal">
     <h2>About Me</h2>
     <p>
       Main Titaeko hoon. Mujhe Minecraft gaming pasand hai aur main creative videos aur photos share karta hoon.
@@ -370,7 +382,7 @@
   </section>
 
   <!-- GALLERY -->
-  <section id="gallery">
+  <section id="gallery" class="reveal">
     <h2>My Gallery</h2>
     <p>Click on any photo to open fullscreen.</p>
 
@@ -399,7 +411,7 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
+  <section id="contact" class="reveal">
     <h2>Contact Me</h2>
     <p>Follow me on social media or contact me.</p>
 
@@ -444,6 +456,25 @@
     setTimeout(() => {
       document.getElementById("introScreen").style.display = "none";
     }, 3500);
+
+    // PROFESSIONAL SCROLL REVEAL EFFECT
+    window.addEventListener("scroll", revealEffect);
+
+    function revealEffect(){
+      let reveals = document.querySelectorAll(".reveal");
+
+      for(let i=0; i<reveals.length; i++){
+        let windowHeight = window.innerHeight;
+        let elementTop = reveals[i].getBoundingClientRect().top;
+        let elementVisible = 120;
+
+        if(elementTop < windowHeight - elementVisible){
+          reveals[i].classList.add("active");
+        }
+      }
+    }
+
+    revealEffect();
   </script>
 
 </body>
