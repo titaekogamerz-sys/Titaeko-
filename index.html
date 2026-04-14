@@ -51,3 +51,138 @@
 <img src="1.jpg">
 <img src="2.jpg">
 <img src="3.jpg">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titaeko</title>
+
+  <style>
+    body{
+      margin:0;
+      padding:0;
+      background:#0b0b0b;
+      color:white;
+      font-family: Arial, sans-serif;
+      text-align:center;
+    }
+
+    h1{
+      margin-top:35px;
+      font-size:55px;
+      font-weight:bold;
+      color:#00ffcc;
+      letter-spacing:2px;
+    }
+
+    p{
+      margin-top:-15px;
+      font-size:16px;
+      color:#bbbbbb;
+    }
+
+    /* Grid Gallery */
+    .gallery{
+      margin-top:30px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap:15px;
+      padding:20px;
+      max-width:1100px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .gallery img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+      border-radius:15px;
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:0px 0px 12px rgba(0,0,0,0.7);
+    }
+
+    .gallery img:hover{
+      transform:scale(1.05);
+      box-shadow:0px 0px 18px rgba(0,255,204,0.5);
+    }
+
+    /* Full Screen Popup */
+    .popup{
+      display:none;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.9);
+      justify-content:center;
+      align-items:center;
+      z-index:999;
+    }
+
+    .popup img{
+      max-width:90%;
+      max-height:85%;
+      border-radius:15px;
+      box-shadow:0px 0px 20px rgba(0,255,204,0.6);
+    }
+
+    .close{
+      position:absolute;
+      top:20px;
+      right:30px;
+      font-size:40px;
+      color:white;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    footer{
+      padding:15px;
+      background:#111;
+      margin-top:20px;
+      font-size:13px;
+      color:#aaa;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Titaeko</h1>
+  <p>Best Photo and Skill</p>
+
+  <div class="gallery">
+    <img src="1.jpg" onclick="openPopup(this.src)">
+    <img src="2.jpg" onclick="openPopup(this.src)">
+    <img src="3.jpg" onclick="openPopup(this.src)">
+    <img src="4.jpg" onclick="openPopup(this.src)">
+    <img src="5.jpg" onclick="openPopup(this.src)">
+  </div>
+
+  <!-- Full Screen Popup -->
+  <div class="popup" id="popup">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <img id="popupImg">
+  </div>
+
+  <footer>
+    © 2026 Titaeko Gamerz | All Rights Reserved
+  </footer>
+
+  <script>
+    function openPopup(src){
+      document.getElementById("popup").style.display = "flex";
+      document.getElementById("popupImg").src = src;
+    }
+
+    function closePopup(){
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
