@@ -1,145 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITAEKO | Coming Soon</title>
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titaeko</title>
 
-        .container {
-            max-width: 800px;
-            padding: 20px;
-        }
+  <style>
+    body{
+      margin:0;
+      padding:0;
+      background:#0b0b0b;
+      color:white;
+      font-family: Arial, sans-serif;
+      text-align:center;
+    }
 
-        h1 {
-            font-size: 5rem;
-            margin: 0;
-            letter-spacing: 10px;
-            text-transform: uppercase;
-            background: linear-gradient(to right, #fff, #444);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
+    h1{
+      margin-top:40px;
+      font-size:50px;
+      font-weight:bold;
+      color:#00ffcc;
+      letter-spacing:2px;
+    }
 
-        @keyframes glow {
-            from { text-shadow: 0 0 10px rgba(255,255,255,0.2); }
-            to { text-shadow: 0 0 30px rgba(255,255,255,0.5); }
-        }
+    p{
+      margin-top:-15px;
+      font-size:16px;
+      color:#bbbbbb;
+    }
 
-        p.coming-soon {
-            font-size: 1.5rem;
-            color: #888;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        /* Timer Styles */
-        #timer {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .time-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 10px;
-            min-width: 80px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .num {
-            font-size: 2.5rem;
-            font-weight: bold;
-            display: block;
-            color: #fff;
-        }
-
-        .label {
-            font-size: 0.8rem;
-            color: #555;
-            text-transform: uppercase;
-        }
-    </style>
+    img{
+      margin-top:25px;
+      width:90%;
+      max-width:650px;
+      border-radius:18px;
+      box-shadow:0px 0px 20px rgba(0,255,204,0.4);
+    }
+  </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>TITAEKO</h1>
-        <p class="coming-soon">Best Photos Ever - Launching In</p>
+  <h1>Titaeko</h1>
+  <p>Best Photo and Skill</p>
 
-        <div id="timer">
-            <div class="time-box">
-                <span class="num" id="days">00</span>
-                <span class="label">Days</span>
-            </div>
-            <div class="time-box">
-                <span class="num" id="hours">00</span>
-                <span class="label">Hours</span>
-            </div>
-            <div class="time-box">
-                <span class="num" id="minutes">00</span>
-                <span class="label">Mins</span>
-            </div>
-            <div class="time-box">
-                <span class="num" id="seconds">00</span>
-                <span class="label">Secs</span>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Yahan wo Date daalo jab website launch karni hai
-        const launchDate = new Date("Dec 31, 2026 00:00:00").getTime();
-
-        const timer = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = launchDate - now;
-
-            // Time calculations
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Output the result
-            document.getElementById("days").innerHTML = days;
-            document.getElementById("hours").innerHTML = hours;
-            document.getElementById("minutes").innerHTML = minutes;
-            document.getElementById("seconds").innerHTML = seconds;
-
-            // If countdown is over
-            if (distance < 0) {
-                clearInterval(timer);
-                document.getElementById("timer").innerHTML = "WE ARE LIVE!";
-            }
-        }, 1000);
-    </script>
+  <img src="jpg.jpg" alt="My Photo">
 
 </body>
 </html>
-<center>
-  <h2>My Photo</h2>
-  <img src="jpg.jpg" style="width:90%; max-width:500px; border-radius:15px;">
-</center>
-<h1 style="text-align:center;">My Website</h1>
-
-<div style="text-align:center; margin-top:20px;">
-  <img src="jpg.jpg" style="width:90%; max-width:600px; border-radius:15px;">
-</div>
-<div style="text-align:center;">
-  <img src="jpg.jpg" style="width:100%; max-width:900px;">
-</div>
