@@ -383,3 +383,185 @@ function toggleMode(){
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Titaeko Gamerz Pro v2</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b0f1a;
+  color:white;
+  text-align:center;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:15px 25px;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(10px);
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin:0 10px;
+}
+
+nav a:hover{
+  color:#00ff88;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#0b0f1a,#1a1f3d,#00ff88);
+}
+
+.hero h1{
+  font-size:50px;
+  animation:pop 2s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(0.5); opacity:0;}
+  to{transform:scale(1); opacity:1;}
+}
+
+.btn{
+  margin-top:20px;
+  padding:10px 20px;
+  border:none;
+  border-radius:10px;
+  background:#00ff88;
+  color:black;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.1);
+}
+
+/* SECTIONS */
+section{
+  padding:80px 20px;
+}
+
+/* GAME BOX */
+.gameBox{
+  background:#1a1f3d;
+  padding:30px;
+  border-radius:15px;
+  display:inline-block;
+}
+
+#score{
+  font-size:30px;
+  margin:20px 0;
+}
+
+.clickBtn{
+  padding:15px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:10px;
+  background:#ffcc00;
+  cursor:pointer;
+}
+
+/* CARDS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+}
+
+.card{
+  background:#1a1f3d;
+  padding:20px;
+  border-radius:12px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  background:#2a305a;
+}
+
+/* FOOTER */
+footer{
+  padding:20px;
+  background:black;
+  color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div><b>Titaeko Gamerz</b></div>
+  <div>
+    <a href="#home">Home</a>
+    <a href="#game">Game</a>
+    <a href="#projects">Projects</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <h1>Minecraft Pro Zone</h1>
+  <p>Gaming • Creativity • Fun</p>
+  <button class="btn" onclick="alert('Welcome Gamer 😎')">Start</button>
+</div>
+
+<!-- GAME -->
+<section id="game">
+  <h2>🎮 Click Game</h2>
+
+  <div class="gameBox">
+    <div id="score">Score: 0</div>
+    <button class="clickBtn" onclick="addScore()">Click Me!</button>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>🔥 My Stuff</h2>
+  <div class="grid">
+    <div class="card">Minecraft Builds</div>
+    <div class="card">YouTube Shorts</div>
+    <div class="card">Web Projects</div>
+    <div class="card">Gaming Clips</div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Titaeko Gamerz
+</footer>
+
+<script>
+let score = 0;
+
+function addScore(){
+  score++;
+  document.getElementById("score").innerText = "Score: " + score;
+}
+</script>
+
+</body>
+</html>
