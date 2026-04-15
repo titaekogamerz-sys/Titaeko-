@@ -10,7 +10,7 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 body{
@@ -19,110 +19,55 @@ body{
   scroll-behavior:smooth;
 }
 
-/* LOADER */
-#loader{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  color:#00ffcc;
-  font-size:28px;
-  letter-spacing:2px;
-}
-
 /* NAV */
 nav{
   position:fixed;
   top:0;
   width:100%;
+  padding:15px 20px;
+  background:rgba(0,0,0,0.8);
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  padding:15px 25px;
-  background:rgba(0,0,0,0.8);
-  backdrop-filter:blur(10px);
   z-index:1000;
-  border-bottom:1px solid rgba(0,255,204,0.2);
-}
-
-nav .logo{
-  color:#00ffcc;
-  font-weight:bold;
-  font-size:20px;
 }
 
 nav a{
   color:white;
-  text-decoration:none;
   margin:0 10px;
-  font-size:14px;
-}
-
-nav a:hover{
-  color:#00ffcc;
-}
-
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  background:linear-gradient(135deg,#000,#111,#00ffcc);
-}
-
-.hero h1{
-  font-size:50px;
-}
-
-.hero p{
-  margin-top:10px;
-  color:#ccc;
+  text-decoration:none;
 }
 
 /* SECTIONS */
 section{
-  padding:80px 20px;
-  text-align:center;
+  padding:100px 20px;
+  max-width:1100px;
+  margin:auto;
 }
 
 h2{
   color:#00ffcc;
-  margin-bottom:10px;
+  margin-bottom:15px;
 }
 
 /* GALLERY */
 .gallery{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
   gap:12px;
-  margin-top:25px;
 }
 
 .gallery img{
   width:100%;
-  height:240px;
+  height:220px;
   object-fit:cover;
   border-radius:12px;
-  cursor:pointer;
-  transition:0.3s;
 }
 
-.gallery img:hover{
-  transform:scale(1.05);
-}
-
-/* VIDEO */
-.videoBox{
+/* VIDEO GRID */
+.videoGrid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:15px;
-  margin-top:20px;
 }
 
 video{
@@ -130,170 +75,111 @@ video{
   border-radius:12px;
 }
 
-/* LIGHTBOX */
-#lightbox{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.92);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:2000;
-}
-
-#lightbox img{
-  max-width:90%;
-  max-height:85%;
+/* ABOUT BOX */
+.aboutBox{
+  background:#111;
+  padding:20px;
   border-radius:12px;
+  border:1px solid #00ffcc33;
 }
 
-/* FOOTER */
 footer{
   text-align:center;
   padding:20px;
-  background:#050505;
+  background:#000;
   color:#777;
-  border-top:1px solid rgba(0,255,204,0.2);
-}
-
-/* MOBILE */
-@media(max-width:600px){
-  .hero h1{
-    font-size:35px;
-  }
-
-  nav{
-    flex-direction:column;
-    gap:10px;
-  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">Loading Titaeko...</div>
-
 <!-- NAV -->
 <nav>
-  <div class="logo">Titaeko</div>
+  <div>Titaeko</div>
   <div>
-    <a href="#home">Home</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#editing">Editing</a>
-    <a href="#videos">Videos</a>
+    <a href="#about">About</a>
+    <a href="#photos">Photos</a>
+    <a href="#videos">Editing</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<div class="hero" id="home">
-  <div>
-    <h1>Welcome to Titaeko</h1>
-    <p>Minecraft • Editing • Creator</p>
+<!-- ABOUT -->
+<section id="about">
+  <h2>About Me</h2>
+  <div class="aboutBox">
+    Main Titaeko hoon. Mujhe gaming, editing aur creative content banana pasand hai.
   </div>
-</div>
-
-<!-- GALLERY -->
-<section id="gallery">
-<h2>📸 Photo Gallery</h2>
-
-<div class="gallery">
-<img src="1.jpg" onclick="openImg(this.src)">
-<img src="2.jpg" onclick="openImg(this.src)">
-<img src="3.jpg" onclick="openImg(this.src)">
-<img src="4.jpg" onclick="openImg(this.src)">
-<img src="5.jpg" onclick="openImg(this.src)">
-<img src="6.jpg" onclick="openImg(this.src)">
-<img src="7.jpg" onclick="openImg(this.src)">
-<img src="8.jpg" onclick="openImg(this.src)">
-<img src="9.jpg" onclick="openImg(this.src)">
-<img src="10.jpg" onclick="openImg(this.src)">
-<img src="11.jpg" onclick="openImg(this.src)">
-<img src="12.jpg" onclick="openImg(this.src)">
-<img src="13.jpg" onclick="openImg(this.src)">
-<img src="14.jpg" onclick="openImg(this.src)">
-<img src="15.jpg" onclick="openImg(this.src)">
-<img src="16.jpg" onclick="openImg(this.src)">
-<img src="17.jpg" onclick="openImg(this.src)">
-<img src="18.jpg" onclick="openImg(this.src)">
-<img src="19.jpg" onclick="openImg(this.src)">
-<img src="20.jpg" onclick="openImg(this.src)">
-<img src="21.jpg" onclick="openImg(this.src)">
-<img src="22.jpg" onclick="openImg(this.src)">
-<img src="23.jpg" onclick="openImg(this.src)">
-<img src="24.jpg" onclick="openImg(this.src)">
-<img src="25.jpg" onclick="openImg(this.src)">
-<img src="26.jpg" onclick="openImg(this.src)">
-<img src="27.jpg" onclick="openImg(this.src)">
-<img src="28.jpg" onclick="openImg(this.src)">
-<img src="29.jpg" onclick="openImg(this.src)">
-<img src="30.jpg" onclick="openImg(this.src)">
-<img src="31.jpg" onclick="openImg(this.src)">
-<img src="32.jpg" onclick="openImg(this.src)">
-<img src="33.jpg" onclick="openImg(this.src)">
-<img src="34.jpg" onclick="openImg(this.src)">
-<img src="35.jpg" onclick="openImg(this.src)">
-<img src="36.jpg" onclick="openImg(this.src)">
-<img src="37.jpg" onclick="openImg(this.src)">
-<img src="38.jpg" onclick="openImg(this.src)">
-<img src="39.jpg" onclick="openImg(this.src)">
-<img src="40.jpg" onclick="openImg(this.src)">
-</div>
 </section>
 
-<!-- BEST EDITING -->
-<section id="editing">
-<h2>🔥 My Best Editing</h2>
+<!-- PHOTOS -->
+<section id="photos">
+  <h2>My Photos</h2>
 
-<div class="gallery">
-<img src="edit1.jpg">
-<img src="edit2.jpg">
-<img src="edit3.jpg">
-<img src="edit4.jpg">
-</div>
+  <div class="gallery">
+    <img src="1.jpg">
+    <img src="2.jpg">
+    <img src="3.jpg">
+    <img src="4.jpg">
+    <img src="5.jpg">
+    <img src="6.jpg">
+    <img src="7.jpg">
+    <img src="8.jpg">
+    <img src="9.jpg">
+    <img src="10.jpg">
+
+    <img src="11.jpg">
+    <img src="12.jpg">
+    <img src="13.jpg">
+    <img src="14.jpg">
+    <img src="15.jpg">
+    <img src="16.jpg">
+    <img src="17.jpg">
+    <img src="18.jpg">
+    <img src="19.jpg">
+    <img src="20.jpg">
+
+    <img src="21.jpg">
+    <img src="22.jpg">
+    <img src="23.jpg">
+    <img src="24.jpg">
+    <img src="25.jpg">
+    <img src="26.jpg">
+    <img src="27.jpg">
+    <img src="28.jpg">
+    <img src="29.jpg">
+    <img src="30.jpg">
+
+    <img src="31.jpg">
+    <img src="32.jpg">
+    <img src="33.jpg">
+    <img src="34.jpg">
+    <img src="35.jpg">
+    <img src="36.jpg">
+    <img src="37.jpg">
+    <img src="38.jpg">
+    <img src="39.jpg">
+    <img src="40.jpg">
+  </div>
 </section>
 
-<!-- VIDEOS -->
+<!-- EDITING VIDEOS -->
 <section id="videos">
-<h2>🎥 My Videos</h2>
+  <h2>My Editing Videos</h2>
 
-<div class="videoBox">
-<video controls src="video1.mp4"></video>
-<video controls src="video2.mp4"></video>
-</div>
+  <div class="videoGrid">
+
+    <video controls src="edit1.mp4"></video>
+    <video controls src="edit2.mp4"></video>
+    <video controls src="edit3.mp4"></video>
+
+  </div>
 </section>
-
-<!-- LIGHTBOX -->
-<div id="lightbox" onclick="closeImg()">
-<img id="lightboxImg">
-</div>
 
 <!-- FOOTER -->
 <footer>
-© 2026 Titaeko | All Rights Reserved
+  © 2026 Titaeko | All Rights Reserved
 </footer>
-
-<script>
-// loader
-window.onload = () => {
-  document.getElementById("loader").style.display = "none";
-};
-
-// open image
-function openImg(src){
-  document.getElementById("lightbox").style.display = "flex";
-  document.getElementById("lightboxImg").src = src;
-}
-
-// close image
-function closeImg(){
-  document.getElementById("lightbox").style.display = "none";
-}
-</script>
 
 </body>
 </html>
