@@ -24,8 +24,8 @@ nav{
   position:fixed;
   top:0;
   width:100%;
-  padding:15px 20px;
-  background:rgba(0,0,0,0.8);
+  padding:15px;
+  background:rgba(0,0,0,0.85);
   display:flex;
   justify-content:space-between;
   z-index:1000;
@@ -39,56 +39,56 @@ nav a{
 
 /* SECTIONS */
 section{
+  min-height:100vh;
   padding:100px 20px;
-  max-width:1100px;
-  margin:auto;
 }
 
-h2{
-  color:#00ffcc;
-  margin-bottom:15px;
+/* ABOUT */
+.aboutBox{
+  background:#111;
+  padding:20px;
+  border-radius:12px;
 }
 
-/* GALLERY */
+/* PHOTO GRID */
 .gallery{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:10px;
 }
 
 .gallery img{
   width:100%;
   height:220px;
   object-fit:cover;
-  border-radius:12px;
+  border-radius:10px;
+  display:block;
 }
 
 /* VIDEO GRID */
 .videoGrid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:15px;
 }
 
 video{
   width:100%;
-  border-radius:12px;
+  border-radius:10px;
+  display:block;
 }
 
-/* ABOUT BOX */
-.aboutBox{
-  background:#111;
-  padding:20px;
-  border-radius:12px;
-  border:1px solid #00ffcc33;
+/* DIVIDER */
+.space{
+  height:60px;
 }
 
-footer{
-  text-align:center;
-  padding:20px;
-  background:#000;
-  color:#777;
+/* HEADINGS */
+h2{
+  color:#00ffcc;
+  margin-bottom:15px;
 }
+
 </style>
 </head>
 
@@ -108,9 +108,11 @@ footer{
 <section id="about">
   <h2>About Me</h2>
   <div class="aboutBox">
-    Main Titaeko hoon. Mujhe gaming, editing aur creative content banana pasand hai.
+    Main Titaeko hoon. Minecraft gaming aur editing mera passion hai.
   </div>
 </section>
+
+<div class="space"></div>
 
 <!-- PHOTOS -->
 <section id="photos">
@@ -163,23 +165,18 @@ footer{
   </div>
 </section>
 
-<!-- EDITING VIDEOS -->
+<div class="space"></div>
+
+<!-- VIDEOS -->
 <section id="videos">
   <h2>My Editing Videos</h2>
 
   <div class="videoGrid">
-
     <video controls src="edit1.mp4"></video>
     <video controls src="edit2.mp4"></video>
     <video controls src="edit3.mp4"></video>
-
   </div>
 </section>
-
-<!-- FOOTER -->
-<footer>
-  © 2026 Titaeko | All Rights Reserved
-</footer>
 
 </body>
 </html>
